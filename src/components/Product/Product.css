@@ -32,6 +32,9 @@
     position: absolute;
     bottom: 0;
 }
+.btn_cart svg {
+    margin-left: 10px;
+}
 .btn_cart:hover {
     background-color: orange;
 }

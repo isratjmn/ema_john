@@ -1,12 +1,19 @@
 .shop_container {
     display: grid;
-    grid-template-columns: 4fr 1fr;
-    
+    grid-template-columns: 3fr 1fr;
 }
+
 .products_container {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 15px;
-    margin: 80px;
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 40px;
+    gap: 20px;
+    margin: 60px;
+}
 
+@media (max-width: 576px) { 
+    .products_container {
+        grid-template-columns: repeat(2, 1fr);
+        padding-left: 10px;
+    }
 }
