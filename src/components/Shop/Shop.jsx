@@ -7,17 +7,14 @@ import './Shop.css';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
-
     useEffect(() => {
         fetch('products.json')
         .then(res => res.json())
         .then(data => setProducts(data))
     }, []);
-
     useEffect(() => {
         const storedCart = getShoppingCart();
         const savedCart = [];
-
         // Step 1: Get id of the addedProduct
         for(const id in storedCart) {
             // Step 2: Get Product from Product State by Using id
@@ -30,19 +27,15 @@ const Shop = () => {
                 savedCart.push(addedProduct);
             }
             // console.log('Added Product', addedProduct);
-
         }
         // Step 5: Set the Cart
         setCart(savedCart);
     }, [products])
 
-
     const handleAddToCart = (product) => {
         // cart.push(product);
         let newCart = [];
-
         // const newCart = [...cart, product];
-
         // If product doesnt exist in the cart, then Set Quantity = 1
         // If exist Update Quantity by 1
         const exists = cart.find(pd => pd.id === product.id);
@@ -53,7 +46,6 @@ const Shop = () => {
             exists.quantity = exists.quantity + 1;
             const remaining = cart.filter(pd => pd.id !== product.id);
             newCart = [...remaining, exists];
-            
         }
         setCart(newCart);
         addToDb(product.id);
